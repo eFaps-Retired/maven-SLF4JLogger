@@ -34,7 +34,7 @@
   ************************************************************************* -->
   <groupId>org.efaps</groupId>
   <packaging>jar</packaging>
-  <artifactId>maven-SLF4JLogger</artifactId>
+  <artifactId>maven-slf4jlogger</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>maven-SLF4JLogger</name>
@@ -45,7 +45,7 @@
   
   <!-- Project Information -->
   <description>
-    Maven plugin for login.
+    Maven plugin for loging to slf4j.
   </description>
   <url>http://www.efaps.org</url>
   <licenses>
@@ -155,46 +155,9 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-
-       <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-source-plugin</artifactId>
-          <executions>
-            <execution>
-              <id>attach-sources</id>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-
-        <!-- Attach JavaDoc -->
-        <plugin>
-          <inherited>true</inherited>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <executions>
-            <execution>
-              <id>attach-javadocs</id>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-
-        <!-- Update Release Info -->
-        <plugin>
-          <inherited>true</inherited>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <configuration>
-            <updateReleaseInfo>true</updateReleaseInfo>
-          </configuration>
-        </plugin>
+       
     </plugins>
-    
+    <!-- extension to submit to a svn based repository -->
     <extensions>
       <extension>
         <groupId>org.jvnet.wagon-svn</groupId>
@@ -221,6 +184,63 @@
     </snapshotRepository>
   </distributionManagement>
   
+  <!--  Profile for a release: Only in this case the source and JavaDoc will be attached -->
+  <profiles>
+    <profile>
+      <id>release-profile</id>
+
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+       
+      <build>
+        <plugins>
+          <!-- Attach Sources -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!-- Attach JavaDoc -->
+          <plugin>
+            <inherited>true</inherited>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!-- Update Release Info -->
+          <plugin>
+            <inherited>true</inherited>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-deploy-plugin</artifactId>
+            <configuration>
+              <updateReleaseInfo>true</updateReleaseInfo>
+            </configuration>
+          </plugin>
+  
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
   
   <!-- ************************************************************************
   * Dependencies
