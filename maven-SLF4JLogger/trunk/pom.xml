@@ -16,7 +16,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 
- Author:          tmo
+ Author:          Jan Moxter
  Revision:        $Rev$
  Last Changed:    $Date$
  Last Changed By: $Author$
@@ -30,55 +30,122 @@
   <modelVersion>4.0.0</modelVersion>
 
   <!-- ************************************************************************
-  * Parent Module Definition
-  ************************************************************************* -->
-  <parent>
-    <groupId>org.efaps</groupId>
-    <artifactId>maven</artifactId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
-
-  <!-- ************************************************************************
   * Module Definition
   ************************************************************************* -->
+  <groupId>org.efaps</groupId>
   <packaging>jar</packaging>
-  <groupId>org.efaps.maven</groupId>
-  <artifactId>maven-efaps-logger</artifactId>
+  <artifactId>maven-SLF4JLogger</artifactId>
+  <version>1.0-SNAPSHOT</version>
 
-  <name>maven-logger</name>
+  <name>maven-SLF4JLogger</name>
 
-  <profiles>
-    <!-- NOTE: This will not be activated on OS X, since
-         classes.jar already has the tools in it. -->
-    <profile>
-      <id>default-tools.jar</id>
-      <activation>
-        <property>
-          <name>java.vendor</name>
-          <value>Sun Microsystems Inc.</value>
-        </property>
-      </activation>
-      <dependencies>
-        <dependency>
-          <groupId>com.sun</groupId>
-          <artifactId>tools</artifactId>
-          <version>1.5</version>
-          <scope>system</scope>
-          <systemPath>${java.home}/../lib/tools.jar</systemPath>
-        </dependency>
-      </dependencies>
-    </profile>
-  </profiles>
- 
+  <prerequisites>
+    <maven>2.0.9</maven>
+  </prerequisites>
+  
+  <!-- Project Information -->
+  <description>
+    Maven plugin for login.
+  </description>
+  <url>http://www.efaps.org</url>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>tmo, tim.moxter</id>
+      <name>Tim Moxter</name>
+      <email>tim.moxter(ad)efaps.org</email>
+      <url>www.efaps.org</url>
+      <organization>eFaps</organization>
+      <organizationUrl />
+      <roles>
+        <role>Architect</role>
+        <role>Release Manager</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties />
+    </developer>
+    <developer>
+      <id>jmox, jmo, jan.moxter, jan.moxter(ad)moxter.net</id>
+      <name>Jan Moxter</name>
+      <email>jan.moxter(ad)efaps.org</email>
+      <url>www.efaps.org</url>
+      <organization>moxter.net S.A.C, Peru</organization>
+      <organizationUrl />
+      <roles>
+        <role>Architect</role>
+      </roles>
+      <timezone>-5</timezone>
+      <properties />
+    </developer>
+  </developers>
+  <inceptionYear>2007</inceptionYear>
+  <organization>
+    <name>eFaps</name>
+    <url>http://www.efaps.org/</url>
+  </organization>
+
+  <!-- Environment Settings -->
+  <issueManagement>
+    <url>http://code.google.com/p/efaps/issues/list</url>
+  </issueManagement>
+  <scm>
+    <connection>scm:svn:http://efaps.googlecode.com/svn/maven-java5/trunk/</connection>
+    <developerConnection>scm:svn:https://developername@efaps.googlecode.com/svn/maven-java5/trunk/</developerConnection>
+    <url>http://efaps.googlecode.com/svn//maven-java5/trunk/</url>
+  </scm>
+  
+  <!-- Reporting -->
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration/>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <configuration>
+          <linkJavadoc>true</linkJavadoc>
+          <javadocDir>apidocs</javadocDir>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>index</report>
+              <report>summary</report>
+              <report>dependencies</report>
+              <report>project-team</report>
+           <!--   <report>mailing-list</report>--> 
+             <!-- <report>cim</report> --> 
+              <report>issue-tracking</report>
+              <report>license</report>
+              <report>scm</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+    
+  </reporting>
+  
   <!-- ************************************************************************
   * Project itself
   ************************************************************************* -->
   <build>
-
     <plugins>
       <!--
-        Compiler Settings"/Users/tim/Daten/eFaps/maven-2.0.7/bin/mvn":
-        - Java 1.5 is needed!
+        Compiler Settings : - Java 1.5 is needed!
       -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -89,9 +156,72 @@
         </configuration>
       </plugin>
 
+       <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- Attach JavaDoc -->
+        <plugin>
+          <inherited>true</inherited>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- Update Release Info -->
+        <plugin>
+          <inherited>true</inherited>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <configuration>
+            <updateReleaseInfo>true</updateReleaseInfo>
+          </configuration>
+        </plugin>
     </plugins>
+    
+    <extensions>
+      <extension>
+        <groupId>org.jvnet.wagon-svn</groupId>
+        <artifactId>wagon-svn</artifactId>
+        <version>1.9</version>
+      </extension>
+    </extensions>
   </build>
 
+  <distributionManagement>
+    <site>
+      <id>efaps-site</id>
+      <url>svn:https://efaps.googlecode.com/svn/site/maven-SLF4JLogger</url>
+    </site>
+    <repository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>efaps-maven-repo-released</id>
+      <url>svn:https://efaps.googlecode.com/svn/repo/released</url>
+    </repository>
+    <snapshotRepository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>efaps-maven-repo-snapshot</id>
+      <url>svn:https://efaps.googlecode.com/svn/repo/snapshot</url>
+    </snapshotRepository>
+  </distributionManagement>
+  
+  
   <!-- ************************************************************************
   * Dependencies
   ************************************************************************* -->
@@ -113,10 +243,11 @@
 
     <!-- maven plugin api -->
     <dependency>
-      <groupId>org.apache.maven</groupId>
-      <artifactId>maven-plugin-api</artifactId>
-      <version>${dependency.version.maven-plugin-api}</version>
+      <groupId>org.apache.maven.plugin-tools</groupId>
+      <artifactId>maven-plugin-tools-api</artifactId>
+      <version>2.5</version>
     </dependency>
-
   </dependencies>
 </project>
+
+
