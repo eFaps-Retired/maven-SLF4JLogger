@@ -31,26 +31,28 @@ import org.efaps.maven.logger.SLF4JOverMavenLogFactory;
  * @version $Id$
  */
 public class StaticLoggerBinder implements LoggerFactoryBinder {
+
   public static final StaticLoggerBinder SINGLETON = new StaticLoggerBinder();
-  private static final String loggerFactoryClassStr;
+
   private final ILoggerFactory loggerFactory = new SLF4JOverMavenLogFactory();
-  
+
+  private static final String loggerFactoryClassStr;
+
   static {
     loggerFactoryClassStr = (SLF4JOverMavenLog.class).getName();
   }
-  
+
   /* (non-Javadoc)
    * @see org.slf4j.spi.LoggerFactoryBinder#getLoggerFactory()
    */
   public ILoggerFactory getLoggerFactory() {
-    return loggerFactory;
+    return this.loggerFactory;
   }
-  
+
   /* (non-Javadoc)
    * @see org.slf4j.spi.LoggerFactoryBinder#getLoggerFactoryClassStr()
    */
   public String getLoggerFactoryClassStr() {
     return loggerFactoryClassStr;
   }
-  
 }
