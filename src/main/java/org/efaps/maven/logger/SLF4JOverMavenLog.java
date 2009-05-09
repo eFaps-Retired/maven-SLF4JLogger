@@ -25,19 +25,17 @@ import org.slf4j.Marker;
 import org.slf4j.helpers.MessageFormatter;
 
 /**
- * This Class converts the Maven internal Logger to an apache Commmons logger.<br/>
- * Therefor the standart logger definition used in eFaps can be used for the
+ * This Class converts the Maven internal Logger to an "Apache Commmons logger."
+ * <br/>
+ * Therefore the standard logger definition used in eFaps can be used for the
  * Maven Mojo also.
- * 
+ *
  * @author tmo
  * @version $Id$
  */
 public class SLF4JOverMavenLog implements Logger {
 
   public static org.apache.maven.plugin.logging.Log LOGGER;
-
-  // ///////////////////////////////////////////////////////////////////////////
-  // constructors / destructors
 
   /* (non-Javadoc)
    * @see org.slf4j.Logger#getName()
