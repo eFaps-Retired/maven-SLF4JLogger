@@ -170,7 +170,7 @@
   <distributionManagement>
     <site>
       <id>efaps-site</id>
-      <url>svn:https://efaps.googlecode.com/svn/site/maven-SLF4JLogger</url>
+      <url>svn:https://efaps.googlecode.com/svn/site/maven-slf4jlogger</url>
     </site>
     <repository>
       <uniqueVersion>false</uniqueVersion>
