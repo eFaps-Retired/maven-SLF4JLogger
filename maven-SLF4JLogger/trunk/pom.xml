@@ -95,9 +95,9 @@
     <url>http://code.google.com/p/efaps/issues/list</url>
   </issueManagement>
   <scm>
-    <connection>scm:svn:http://efaps.googlecode.com/svn/maven-java5/trunk/</connection>
-    <developerConnection>scm:svn:https://developername@efaps.googlecode.com/svn/maven-java5/trunk/</developerConnection>
-    <url>http://efaps.googlecode.com/svn//maven-java5/trunk/</url>
+    <connection>scm:svn:http://efaps.googlecode.com/svn/maven-slf4jlogger/trunk/</connection>
+    <developerConnection>scm:svn:https://developername@efaps.googlecode.com/svn/maven-slf4jlogger/trunk/</developerConnection>
+    <url>http://efaps.googlecode.com/svn//maven-slf4jlogger/trunk/</url>
   </scm>
   
   <!-- Reporting -->
