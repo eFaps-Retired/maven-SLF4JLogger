@@ -37,7 +37,7 @@
     <groupId>org.efaps</groupId>
     <packaging>jar</packaging>
     <artifactId>maven-slf4jlogger</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <name>maven-SLF4JLogger</name>
 
