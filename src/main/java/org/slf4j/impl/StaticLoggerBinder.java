@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2009 The eFaps Team
+ * Copyright 2003 - 2010 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,39 +20,58 @@
 
 package org.slf4j.impl;
 
+import org.efaps.maven.logger.SLF4JOverMavenLog;
+import org.efaps.maven.logger.SLF4JOverMavenLogFactory;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.spi.LoggerFactoryBinder;
 
-import org.efaps.maven.logger.SLF4JOverMavenLog;
-import org.efaps.maven.logger.SLF4JOverMavenLogFactory;
-
 /**
- * @author tmo
+ * @author The eFasp Team
  * @version $Id$
  */
-public class StaticLoggerBinder implements LoggerFactoryBinder {
+public class StaticLoggerBinder
+    implements LoggerFactoryBinder
+{
 
-  public static final StaticLoggerBinder SINGLETON = new StaticLoggerBinder();
+    public static final StaticLoggerBinder SINGLETON = new StaticLoggerBinder();
 
-  private final ILoggerFactory loggerFactory = new SLF4JOverMavenLogFactory();
+    private final ILoggerFactory loggerFactory;
 
-  private static final String loggerFactoryClassStr;
+    private static final String loggerFactoryClassStr;
 
-  static {
-    loggerFactoryClassStr = (SLF4JOverMavenLog.class).getName();
-  }
+    private StaticLoggerBinder()
+    {
+        this.loggerFactory = new SLF4JOverMavenLogFactory();
+    }
 
-  /* (non-Javadoc)
-   * @see org.slf4j.spi.LoggerFactoryBinder#getLoggerFactory()
-   */
-  public ILoggerFactory getLoggerFactory() {
-    return this.loggerFactory;
-  }
+    static {
+        loggerFactoryClassStr = (SLF4JOverMavenLog.class).getName();
+    }
 
-  /* (non-Javadoc)
-   * @see org.slf4j.spi.LoggerFactoryBinder#getLoggerFactoryClassStr()
-   */
-  public String getLoggerFactoryClassStr() {
-    return loggerFactoryClassStr;
-  }
+    /*
+     * (non-Javadoc)
+     * @see org.slf4j.spi.LoggerFactoryBinder#getLoggerFactory()
+     */
+    public ILoggerFactory getLoggerFactory()
+    {
+        return this.loggerFactory;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see org.slf4j.spi.LoggerFactoryBinder#getLoggerFactoryClassStr()
+     */
+    public String getLoggerFactoryClassStr()
+    {
+        return StaticLoggerBinder.loggerFactoryClassStr;
+    }
+
+    /**
+     * Return the singleton of this class.
+     * @return the StaticLoggerBinder singleton
+     */
+    public static StaticLoggerBinder getSingleton()
+    {
+        return StaticLoggerBinder.SINGLETON;
+    }
 }
