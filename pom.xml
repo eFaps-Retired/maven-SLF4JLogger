@@ -35,7 +35,7 @@
     <groupId>org.efaps</groupId>
     <packaging>jar</packaging>
     <artifactId>maven-slf4jlogger</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4-SNAPSHOT</version>
 
     <name>maven-SLF4JLogger</name>
 
@@ -95,9 +95,9 @@
         <url>http://code.google.com/p/efaps/issues/list</url>
     </issueManagement>
     <scm>
-        <connection>scm:svn:http://efaps.googlecode.com/svn/maven-SLF4JLogger/tags/maven-slf4jlogger-1.0.3</connection>
-        <developerConnection>scm:svn:https://efaps.googlecode.com/svn/maven-SLF4JLogger/tags/maven-slf4jlogger-1.0.3</developerConnection>
-        <url>http://efaps.googlecode.com/svn/maven-SLF4JLogger/tags/maven-slf4jlogger-1.0.3</url>
+        <connection>scm:svn:http://efaps.googlecode.com/svn/maven-SLF4JLogger/trunk</connection>
+        <developerConnection>scm:svn:https://efaps.googlecode.com/svn/maven-SLF4JLogger/trunk</developerConnection>
+        <url>http://efaps.googlecode.com/svn/maven-SLF4JLogger/trunk</url>
     </scm>
 
     <!-- Reporting -->
