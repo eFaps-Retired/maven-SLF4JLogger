@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2009 The eFaps Team
+ * Copyright 2003 - 2013 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,14 +26,17 @@ import org.slf4j.Logger;
 
 /**
  *
- * @author tmo
+ * @author The eFaps Team
  * @version $Id$
  */
-public class SLF4JOverMavenLogFactory implements ILoggerFactory {
+public class SLF4JOverMavenLogFactory
+    implements ILoggerFactory
+{
 
-  final SLF4JOverMavenLog logInstance = new SLF4JOverMavenLog();
+    final SLF4JOverMavenLog logInstance = new SLF4JOverMavenLog();
 
-  public Logger getLogger(final String name) {
-    return this.logInstance;
-  }
+    public Logger getLogger(final String name)
+    {
+        return this.logInstance;
+    }
 }

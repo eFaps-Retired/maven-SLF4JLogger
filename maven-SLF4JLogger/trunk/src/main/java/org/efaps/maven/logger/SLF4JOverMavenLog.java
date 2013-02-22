@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2009 The eFaps Team
+ * Copyright 2003 - 2013 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ import org.slf4j.helpers.MessageFormatter;
  * Therefore the standard logger definition used in eFaps can be used for the
  * Maven Mojo also.
  *
- * @author tmo
+ * @author The eFaps Team
  * @version $Id$
  */
 public class SLF4JOverMavenLog
@@ -79,7 +79,9 @@ public class SLF4JOverMavenLog
     public void debug(final String _messagePattern,
                       final Object _arg)
     {
-        SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        if (isDebugEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        }
     }
 
     /*
@@ -87,9 +89,11 @@ public class SLF4JOverMavenLog
      * @see org.slf4j.Logger#debug(java.lang.String, java.lang.Object[])
      */
     public void debug(final String _messagePattern,
-                      final Object[] _args)
+                      final Object... _args)
     {
-        SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        if (isDebugEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        }
     }
 
     /*
@@ -99,7 +103,9 @@ public class SLF4JOverMavenLog
     public void debug(final String _text,
                       final Throwable _e)
     {
-        SLF4JOverMavenLog.LOGGER.debug(_text, _e);
+        if (isDebugEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(_text, _e);
+        }
     }
 
     /*
@@ -109,7 +115,9 @@ public class SLF4JOverMavenLog
     public void debug(final Marker _marker,
                       final String _text)
     {
-        SLF4JOverMavenLog.LOGGER.debug(_text);
+        if (isDebugEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(_text);
+        }
     }
 
     /*
@@ -121,7 +129,9 @@ public class SLF4JOverMavenLog
                       final Object _arg1,
                       final Object _arg2)
     {
-        SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        if (isDebugEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        }
     }
 
     /*
@@ -133,7 +143,9 @@ public class SLF4JOverMavenLog
                       final String _messagePattern,
                       final Object _arg)
     {
-        SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        if (isDebugEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        }
     }
 
     /*
@@ -143,9 +155,11 @@ public class SLF4JOverMavenLog
      */
     public void debug(final Marker _marker,
                       final String _messagePattern,
-                      final Object[] _args)
+                      final Object... _args)
     {
-        SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        if (isDebugEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        }
     }
 
     /*
@@ -157,7 +171,9 @@ public class SLF4JOverMavenLog
                       final String _text,
                       final Throwable _e)
     {
-        SLF4JOverMavenLog.LOGGER.debug(_text, _e);
+        if (isDebugEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(_text, _e);
+        }
     }
 
     /*
@@ -170,7 +186,9 @@ public class SLF4JOverMavenLog
                       final Object _arg1,
                       final Object _arg2)
     {
-        SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        if (isDebugEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        }
     }
 
        // Is error logging currently enabled?
@@ -194,7 +212,9 @@ public class SLF4JOverMavenLog
      */
     public void error(final String _text)
     {
-        SLF4JOverMavenLog.LOGGER.error(_text);
+        if (isErrorEnabled()) {
+            SLF4JOverMavenLog.LOGGER.error(_text);
+        }
     }
 
     /*
@@ -204,7 +224,9 @@ public class SLF4JOverMavenLog
     public void error(final String _messagePattern,
                       final Object _arg)
     {
-        SLF4JOverMavenLog.LOGGER.error(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        if (isErrorEnabled()) {
+            SLF4JOverMavenLog.LOGGER.error(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        }
     }
 
     /*
@@ -212,9 +234,11 @@ public class SLF4JOverMavenLog
      * @see org.slf4j.Logger#error(java.lang.String, java.lang.Object[])
      */
     public void error(final String _messagePattern,
-                      final Object[] _args)
+                      final Object... _args)
     {
-        SLF4JOverMavenLog.LOGGER.error(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        if (isErrorEnabled()) {
+            SLF4JOverMavenLog.LOGGER.error(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        }
     }
 
     /*
@@ -224,7 +248,9 @@ public class SLF4JOverMavenLog
     public void error(final String _text,
                       final Throwable _e)
     {
-        SLF4JOverMavenLog.LOGGER.error(_text, _e);
+        if (isErrorEnabled()) {
+            SLF4JOverMavenLog.LOGGER.error(_text, _e);
+        }
     }
 
     /*
@@ -234,7 +260,9 @@ public class SLF4JOverMavenLog
     public void error(final Marker _marker,
                       final String _text)
     {
-        SLF4JOverMavenLog.LOGGER.error(_text);
+        if (isErrorEnabled()) {
+            SLF4JOverMavenLog.LOGGER.error(_text);
+        }
     }
 
     /*
@@ -246,7 +274,9 @@ public class SLF4JOverMavenLog
                       final Object _arg1,
                       final Object _arg2)
     {
-        SLF4JOverMavenLog.LOGGER.error(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        if (isErrorEnabled()) {
+            SLF4JOverMavenLog.LOGGER.error(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        }
     }
 
     /*
@@ -258,7 +288,9 @@ public class SLF4JOverMavenLog
                       final String _messagePattern,
                       final Object _arg)
     {
-        SLF4JOverMavenLog.LOGGER.error(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        if (isErrorEnabled()) {
+            SLF4JOverMavenLog.LOGGER.error(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        }
     }
 
     /*
@@ -268,9 +300,11 @@ public class SLF4JOverMavenLog
      */
     public void error(final Marker _marker,
                       final String _messagePattern,
-                      final Object[] _args)
+                      final Object... _args)
     {
-        SLF4JOverMavenLog.LOGGER.error(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        if (isErrorEnabled()) {
+            SLF4JOverMavenLog.LOGGER.error(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        }
     }
 
     /*
@@ -282,7 +316,9 @@ public class SLF4JOverMavenLog
                       final String _text,
                       final Throwable _e)
     {
-        SLF4JOverMavenLog.LOGGER.error(_text, _e);
+        if (isErrorEnabled()) {
+            SLF4JOverMavenLog.LOGGER.error(_text, _e);
+        }
     }
 
     /*
@@ -295,7 +331,9 @@ public class SLF4JOverMavenLog
                       final Object _arg1,
                       final Object _arg2)
     {
-        SLF4JOverMavenLog.LOGGER.error(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        if (isErrorEnabled()) {
+            SLF4JOverMavenLog.LOGGER.error(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        }
     }
 
     // Is info logging currently enabled?
@@ -329,7 +367,9 @@ public class SLF4JOverMavenLog
     public void info(final String _messagePattern,
                      final Object _arg)
     {
-        SLF4JOverMavenLog.LOGGER.info(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        if (isInfoEnabled()) {
+            SLF4JOverMavenLog.LOGGER.info(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        }
     }
 
     /*
@@ -337,9 +377,11 @@ public class SLF4JOverMavenLog
      * @see org.slf4j.Logger#info(java.lang.String, java.lang.Object[])
      */
     public void info(final String _messagePattern,
-                     final Object[] _args)
+                     final Object... _args)
     {
-        SLF4JOverMavenLog.LOGGER.info(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        if (isInfoEnabled()) {
+            SLF4JOverMavenLog.LOGGER.info(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        }
     }
 
     /*
@@ -349,7 +391,9 @@ public class SLF4JOverMavenLog
     public void info(final String _text,
                      final Throwable _e)
     {
-        SLF4JOverMavenLog.LOGGER.info(_text, _e);
+        if (isInfoEnabled()) {
+            SLF4JOverMavenLog.LOGGER.info(_text, _e);
+        }
     }
 
     /*
@@ -359,7 +403,9 @@ public class SLF4JOverMavenLog
     public void info(final Marker _marker,
                      final String _text)
     {
-        SLF4JOverMavenLog.LOGGER.info(_text);
+        if (isInfoEnabled()) {
+            SLF4JOverMavenLog.LOGGER.info(_text);
+        }
     }
 
     /*
@@ -371,7 +417,9 @@ public class SLF4JOverMavenLog
                      final Object _arg1,
                      final Object _arg2)
     {
-        SLF4JOverMavenLog.LOGGER.info(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        if (isInfoEnabled()) {
+            SLF4JOverMavenLog.LOGGER.info(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        }
     }
 
     /*
@@ -383,7 +431,9 @@ public class SLF4JOverMavenLog
                      final String _messagePattern,
                      final Object _arg)
     {
-        SLF4JOverMavenLog.LOGGER.info(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        if (isInfoEnabled()) {
+            SLF4JOverMavenLog.LOGGER.info(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        }
     }
 
     /*
@@ -393,9 +443,11 @@ public class SLF4JOverMavenLog
      */
     public void info(final Marker _marker,
                      final String _messagePattern,
-                     final Object[] _args)
+                     final Object... _args)
     {
-        SLF4JOverMavenLog.LOGGER.info(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        if (isInfoEnabled()) {
+            SLF4JOverMavenLog.LOGGER.info(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        }
     }
 
     /*
@@ -407,7 +459,9 @@ public class SLF4JOverMavenLog
                      final String _text,
                      final Throwable _e)
     {
-        SLF4JOverMavenLog.LOGGER.info(_text, _e);
+        if (isInfoEnabled()) {
+            SLF4JOverMavenLog.LOGGER.info(_text, _e);
+        }
     }
 
     /*
@@ -420,7 +474,9 @@ public class SLF4JOverMavenLog
                      final Object _arg1,
                      final Object _arg2)
     {
-        SLF4JOverMavenLog.LOGGER.info(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        if (isInfoEnabled()) {
+            SLF4JOverMavenLog.LOGGER.info(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        }
     }
 
     // ///////////////////////////////////////////////////////////////////////////
@@ -447,7 +503,9 @@ public class SLF4JOverMavenLog
      */
     public void trace(final String _text)
     {
-        SLF4JOverMavenLog.LOGGER.debug(_text);
+        if (isTraceEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(_text);
+        }
     }
 
     /*
@@ -457,7 +515,9 @@ public class SLF4JOverMavenLog
     public void trace(final String _messagePattern,
                       final Object _arg)
     {
-        SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        if (isTraceEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        }
     }
 
     /*
@@ -465,9 +525,11 @@ public class SLF4JOverMavenLog
      * @see org.slf4j.Logger#trace(java.lang.String, java.lang.Object[])
      */
     public void trace(final String _messagePattern,
-                      final Object[] _args)
+                      final Object... _args)
     {
-        SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        if (isTraceEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        }
     }
 
     /*
@@ -477,7 +539,9 @@ public class SLF4JOverMavenLog
     public void trace(final String _text,
                       final Throwable _e)
     {
-        SLF4JOverMavenLog.LOGGER.debug(_text, _e);
+        if (isTraceEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(_text, _e);
+        }
     }
 
     /*
@@ -487,7 +551,9 @@ public class SLF4JOverMavenLog
     public void trace(final Marker _marker,
                       final String _text)
     {
-        SLF4JOverMavenLog.LOGGER.debug(_text);
+        if (isTraceEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(_text);
+        }
     }
 
     /*
@@ -499,7 +565,9 @@ public class SLF4JOverMavenLog
                       final Object _arg1,
                       final Object _arg2)
     {
-        SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        if (isTraceEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        }
     }
 
     /*
@@ -521,9 +589,11 @@ public class SLF4JOverMavenLog
      */
     public void trace(final Marker _marker,
                       final String _messagePattern,
-                      final Object[] _args)
+                      final Object... _args)
     {
-        SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        if (isTraceEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        }
     }
 
     /*
@@ -535,7 +605,9 @@ public class SLF4JOverMavenLog
                       final String _text,
                       final Throwable _e)
     {
-        SLF4JOverMavenLog.LOGGER.debug(_text, _e);
+        if (isTraceEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(_text, _e);
+        }
     }
 
     /*
@@ -548,7 +620,9 @@ public class SLF4JOverMavenLog
                       final Object _arg1,
                       final Object _arg2)
     {
-        SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        if (isTraceEnabled()) {
+            SLF4JOverMavenLog.LOGGER.debug(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        }
     }
 
     // ///////////////////////////////////////////////////////////////////////////
@@ -575,7 +649,9 @@ public class SLF4JOverMavenLog
      */
     public void warn(final String _text)
     {
-        SLF4JOverMavenLog.LOGGER.warn(_text);
+        if (isWarnEnabled()) {
+            SLF4JOverMavenLog.LOGGER.warn(_text);
+        }
     }
 
     /*
@@ -585,7 +661,9 @@ public class SLF4JOverMavenLog
     public void warn(final String _messagePattern,
                      final Object _arg)
     {
-        SLF4JOverMavenLog.LOGGER.warn(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        if (isWarnEnabled()) {
+            SLF4JOverMavenLog.LOGGER.warn(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        }
     }
 
     /*
@@ -593,9 +671,11 @@ public class SLF4JOverMavenLog
      * @see org.slf4j.Logger#warn(java.lang.String, java.lang.Object[])
      */
     public void warn(final String _messagePattern,
-                     final Object[] _args)
+                     final Object... _args)
     {
-        SLF4JOverMavenLog.LOGGER.warn(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        if (isWarnEnabled()) {
+            SLF4JOverMavenLog.LOGGER.warn(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        }
     }
 
     /*
@@ -605,7 +685,9 @@ public class SLF4JOverMavenLog
     public void warn(final String _text,
                      final Throwable _e)
     {
-        SLF4JOverMavenLog.LOGGER.warn(_text, _e);
+        if (isWarnEnabled()) {
+            SLF4JOverMavenLog.LOGGER.warn(_text, _e);
+        }
     }
 
     /*
@@ -615,7 +697,9 @@ public class SLF4JOverMavenLog
     public void warn(final Marker _marker,
                      final String _text)
     {
-        SLF4JOverMavenLog.LOGGER.warn(_text);
+        if (isWarnEnabled()) {
+            SLF4JOverMavenLog.LOGGER.warn(_text);
+        }
     }
 
     /*
@@ -627,7 +711,9 @@ public class SLF4JOverMavenLog
                      final Object _arg1,
                      final Object _arg2)
     {
-        SLF4JOverMavenLog.LOGGER.warn(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        if (isWarnEnabled()) {
+            SLF4JOverMavenLog.LOGGER.warn(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        }
     }
 
     /*
@@ -639,7 +725,9 @@ public class SLF4JOverMavenLog
                      final String _messagePattern,
                      final Object _arg)
     {
-        SLF4JOverMavenLog.LOGGER.warn(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        if (isWarnEnabled()) {
+            SLF4JOverMavenLog.LOGGER.warn(MessageFormatter.format(_messagePattern, _arg).getMessage());
+        }
     }
 
     /*
@@ -649,9 +737,11 @@ public class SLF4JOverMavenLog
      */
     public void warn(final Marker _marker,
                      final String _messagePattern,
-                     final Object[] _args)
+                     final Object... _args)
     {
-        SLF4JOverMavenLog.LOGGER.warn(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        if (isWarnEnabled()) {
+            SLF4JOverMavenLog.LOGGER.warn(MessageFormatter.arrayFormat(_messagePattern, _args).getMessage());
+        }
     }
 
     /*
@@ -663,7 +753,9 @@ public class SLF4JOverMavenLog
                      final String _text,
                      final Throwable _e)
     {
-        SLF4JOverMavenLog.LOGGER.warn(_text, _e);
+        if (isWarnEnabled()) {
+            SLF4JOverMavenLog.LOGGER.warn(_text, _e);
+        }
     }
 
     /*
@@ -676,6 +768,8 @@ public class SLF4JOverMavenLog
                      final Object _arg1,
                      final Object _arg2)
     {
-        SLF4JOverMavenLog.LOGGER.warn(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        if (isWarnEnabled()) {
+            SLF4JOverMavenLog.LOGGER.warn(MessageFormatter.format(_messagePattern, _arg1, _arg2).getMessage());
+        }
     }
 }
