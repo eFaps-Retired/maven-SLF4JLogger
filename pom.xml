@@ -2,7 +2,7 @@
 
 <!--
 
- Copyright 2003 - 2010 The eFaps Team
+ Copyright 2003 - 2013 The eFaps Team
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -148,9 +148,6 @@
     -->
     <build>
         <plugins>
-            <!--
-        Compiler Settings : - Java 1.5 is needed!
-      -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -166,7 +163,7 @@
             <extension>
                 <groupId>org.jvnet.wagon-svn</groupId>
                 <artifactId>wagon-svn</artifactId>
-                <version>1.9</version>
+                <version>1.11</version>
             </extension>
         </extensions>
     </build>
@@ -193,22 +190,21 @@
         be attached
     -->
     <profiles>
-        <profile>
+         <profile>
             <id>release-profile</id>
-
             <activation>
                 <property>
                     <name>performRelease</name>
                     <value>true</value>
                 </property>
             </activation>
-
             <build>
                 <plugins>
                     <!-- Attach Sources -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
+                        <version>2.1.2</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -218,12 +214,12 @@
                             </execution>
                         </executions>
                     </plugin>
-
                     <!-- Attach JavaDoc -->
                     <plugin>
                         <inherited>true</inherited>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.8.1</version>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
@@ -233,12 +229,12 @@
                             </execution>
                         </executions>
                     </plugin>
-
                     <!-- Update Release Info -->
                     <plugin>
                         <inherited>true</inherited>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-deploy-plugin</artifactId>
+                        <version>2.7</version>
                         <configuration>
                             <updateReleaseInfo>true</updateReleaseInfo>
                         </configuration>
@@ -247,6 +243,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.4</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -262,11 +259,6 @@
         </profile>
     </profiles>
 
-    <!--
-        ************************************************************************
-        * Dependencies
-        *************************************************************************
-    -->
     <dependencies>
 
         <!-- Simple Logging Facade for Java logging -->
